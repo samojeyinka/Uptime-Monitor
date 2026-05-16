@@ -8,7 +8,7 @@ Follow these steps to get the project up and running:
 
 1. Clone the repository
 ```bash
-git clone <repository-url>
+git clone https://github.com/samojeyinka/Uptime-Monitor.git
 cd uptime_monitor
 ```
 
