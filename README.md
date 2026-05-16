@@ -75,21 +75,13 @@ php artisan schedule:work
 Running the Monitor
 
 For the monitoring system to function correctly, two background processes must be running:
-1.The Scheduler (`php artisan schedule:work`): Dispatches check jobs every minute.
-2. he Queue (`php artisan queue:listen`): Processes the dispatched check jobs. (Included in `composer dev`).
+1. The Scheduler (`php artisan schedule:work`): Dispatches check jobs every minute.
+2. he Queue (`php artisan queue:listen`): Processes the dispatched check jobs.
 
-Quick Testing
 
-To quickly verify the system is working:
+Check Notifications: Open [Mailpit](http://localhost:8025) to see any outgoing status change notifications.
 
-1. Start the api
-:
-   ```bash
-   php artisan serve
-   ```
-2. Start the Queue & Scheduler: Ensure you have `php artisan queue:listen` and `php artisan schedule:work` running to process checks.
-3. Check Notifications: Open [Mailpit](http://localhost:8025) to see any outgoing status change notifications.
-4. Test with Local Apps: 
+Test with Local Apps: 
    - Add your existing local development apps to the monitor (e.g., `http://localhost:3000` or `http://localhost:5173`).
    - The monitor will detect if your React/Vite dev servers are running or down.
 
