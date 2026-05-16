@@ -92,6 +92,37 @@ Service Access
 - PostgreSQL: `localhost:5432`
 - Redis: `localhost:6379`
 
+## Endpoints
+
+### Add website to monitor
+
+http://127.0.0.1:8000/api/v1/monitors
+    - body:
+
+```
+POST
+{
+  "url": "http://localhost:5173/",
+  "check_interval": 1,
+  "threshold": 1
+}
+```
+
+### Fetch all websites
+
+GET
+```
+http://127.0.0.1:8000/api/v1/monitors
+```
+
+### Single website history
+
+GET
+```
+http://127.0.0.1:8000/api/v1/monitors/01krpvcqncy5thsc25p2ec69e7/history?per_page=15
+```
+
+
 ## Testing
 
 Run tests:
