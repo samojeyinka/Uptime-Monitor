@@ -4,13 +4,14 @@ namespace App\Models;
 
 use App\Enums\MonitorStatus;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
 class Monitor extends Model
 {
 
-    use Notifiable, HasUlids;
+    use Notifiable, HasUlids, HasFactory;
 
     protected $fillable = [
         'url',
