@@ -2,12 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Monitor;
 use App\Enums\MonitorStatus;
+use App\Models\Monitor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Monitor>
+ * @extends Factory<Monitor>
  */
 class MonitorFactory extends Factory
 {

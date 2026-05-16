@@ -15,8 +15,7 @@ class MonitorHistoryController extends Controller
         $checks = $monitor->checks()
             ->orderBy('checked_at', 'desc')
             ->paginate($perPage);
+
         return MonitorCheckResource::collection($checks);
     }
-
-
 }

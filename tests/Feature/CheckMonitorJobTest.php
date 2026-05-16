@@ -34,7 +34,7 @@ it('updates monitor status to up and records a check when successful', function 
     expect($monitor->status)->toBe(MonitorStatus::UP);
     expect($monitor->consecutive_failures)->toBe(0);
     expect($monitor->checks()->count())->toBe(1);
-    
+
     $check = $monitor->checks()->first();
     expect($check->status_code)->toBe(200);
     expect($check->is_up)->toBe(true);

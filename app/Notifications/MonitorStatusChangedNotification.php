@@ -17,9 +17,7 @@ class MonitorStatusChangedNotification extends Notification implements ShouldQue
     /**
      * Create a new notification instance.
      */
-    public function __construct(public Monitor $monitor, public MonitorStatus $newStatus)
-    {
-    }
+    public function __construct(public Monitor $monitor, public MonitorStatus $newStatus) {}
 
     /**
      * Get the notification's delivery channels.
@@ -38,16 +36,16 @@ class MonitorStatusChangedNotification extends Notification implements ShouldQue
     {
 
         $isDown = $this->newStatus === MonitorStatus::DOWN;
-        $subject = $isDown ? 'ALERT: ' . $this->monitor->url . ' is DOWN'
-            : 'RESOLVED: ' . $this->monitor->url . ' is back UP';
+        $subject = $isDown ? 'ALERT: '.$this->monitor->url.' is DOWN'
+            : 'RESOLVED: '.$this->monitor->url.' is back UP';
 
         return (new MailMessage)
             ->subject($subject)
             ->line($isDown
                 ? 'Your monitored site has gone DOWN.'
                 : 'Your monitored site has recovered and is back UP.')
-            ->line('URL: ' . $this->monitor->url)
-            ->line('Detected at: ' . now()->toDateTimeString());
+            ->line('URL: '.$this->monitor->url)
+            ->line('Detected at: '.now()->toDateTimeString());
     }
 
     /**
@@ -64,7 +62,6 @@ class MonitorStatusChangedNotification extends Notification implements ShouldQue
             'status' => $this->newStatus->value,
             'changed_at' => now()->toISOString(),
         ];
-
 
     }
 }

@@ -32,8 +32,7 @@ class CreateMonitorRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'url.unique' => 'You are already monitoring the url'
+            'url.unique' => 'You are already monitoring the url',
         ];
     }
-
 }

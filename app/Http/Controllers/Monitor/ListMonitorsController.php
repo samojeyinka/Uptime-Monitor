@@ -8,8 +8,7 @@ use App\Models\Monitor;
 
 class ListMonitorsController extends Controller
 {
-
-    public function __construct(protected Monitor $monitor){}
+    public function __construct(protected Monitor $monitor) {}
 
     public function __invoke()
     {

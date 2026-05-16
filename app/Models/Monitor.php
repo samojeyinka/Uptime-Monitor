@@ -10,8 +10,7 @@ use Illuminate\Notifications\Notifiable;
 
 class Monitor extends Model
 {
-
-    use Notifiable, HasUlids, HasFactory;
+    use HasFactory, HasUlids, Notifiable;
 
     protected $fillable = [
         'url',
@@ -23,6 +22,7 @@ class Monitor extends Model
         'uptime_percentage',
         'notified_down_at',
     ];
+
     protected $casts = [
         'status' => MonitorStatus::class,
         'last_checked_at' => 'datetime',
@@ -30,17 +30,17 @@ class Monitor extends Model
         'uptime_percentage' => 'float',
     ];
 
+    protected $keyType = 'string';
 
-     protected $keyType = 'string';  
-    public $incrementing = false; 
-  
+    public $incrementing = false;
+
     public function routeNotificationForMail(): string
     {
         return config('mail.from.address');
     }
+
     public function checks()
     {
         return $this->hasMany(MonitorCheck::class);
     }
-
 }

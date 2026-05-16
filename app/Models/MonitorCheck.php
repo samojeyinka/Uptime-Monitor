@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class MonitorCheck extends Model
 {
     use HasUlids;
+
     public $timestamps = false;
 
     protected $fillable = [
@@ -18,8 +19,8 @@ class MonitorCheck extends Model
         'checked_at',
     ];
 
-
     protected $keyType = 'string';
+
     public $incrementing = false;
 
     protected $casts = [

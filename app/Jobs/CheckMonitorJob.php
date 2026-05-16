@@ -15,14 +15,13 @@ use Illuminate\Queue\SerializesModels;
 
 class CheckMonitorJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, CalculatesUptime;
+    use CalculatesUptime, Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
      * Create a new job instance.
      */
-
-
     public int $tries = 3;
+
     public int $backoff = 10;
 
     public function __construct(public Monitor $monitor)
@@ -33,21 +32,18 @@ class CheckMonitorJob implements ShouldQueue
     /**
      * Execute the job.
      */
-
-
     public function handle(MonitorCheckerService $checker): void
     {
         $result = $checker->check($this->monitor->url);
-      
+
         $this->monitor->checks()->create([
             'status_code' => $result['status_code'],
             'response_time_ms' => $result['response_time_ms'],
             'is_up' => $result['is_up'],
             'checked_at' => now(),
         ]);
-   
+
         $previousStatus = $this->monitor->status;
-     
 
         if ($result['is_up']) {
             $this->monitor->update([
@@ -67,7 +63,7 @@ class CheckMonitorJob implements ShouldQueue
                 'uptime_percentage' => $this->computeUptime($this->monitor),
             ]);
         }
-     
+
         $this->monitor->refresh();
         $newStatus = $this->monitor->status;
         $wentDown = $previousStatus !== MonitorStatus::DOWN && $newStatus === MonitorStatus::DOWN;
@@ -79,5 +75,4 @@ class CheckMonitorJob implements ShouldQueue
             );
         }
     }
-
 }

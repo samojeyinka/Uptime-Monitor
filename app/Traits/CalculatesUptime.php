@@ -6,7 +6,6 @@ use App\Models\Monitor;
 
 trait CalculatesUptime
 {
-   
     protected function computeUptime(Monitor $monitor): float
     {
         $total = $monitor->checks()->count();
