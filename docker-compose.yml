@@ -3,7 +3,7 @@ version: '3.8'
 services:
   db:
     image: postgres:15-alpine
-    container_name: notepaper_db
+    container_name: uptime_monitor_db
     restart: always
     environment:
       POSTGRES_DB: uptime_monitor
@@ -16,7 +16,7 @@ services:
 
   cache:
     image: redis:alpine
-    container_name: notepaper_redis
+    container_name: uptime_monitor_redis
     restart: always
     ports:
       - "6379:6379"
@@ -25,7 +25,7 @@ services:
 
   mailpit:
     image: axllent/mailpit
-    container_name: notepaper_mailpit
+    container_name: uptime_monitor_mailpit
     restart: always
     ports:
       - "1025:1025"
