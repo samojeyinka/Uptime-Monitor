@@ -91,3 +91,20 @@ Service Access
 - Mailpit (Email Testing): [http://localhost:8025](http://localhost:8025)
 - PostgreSQL: `localhost:5432`
 - Redis: `localhost:6379`
+
+## Testing
+
+Run tests:
+```bash
+php artisan test
+```
+
+Run specific test:
+```bash
+php artisan test --filter "it updates monitor status to up"
+```
+
+Tips:
+- Use `->only()` to run a single test.
+- Use `--bail` to stop on first failure.
+- To verify failures, change `MonitorStatus::UP` to `MonitorStatus::DOWN` in `CheckMonitorJobTest.php:34`.
